@@ -1,0 +1,14 @@
+steps:
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: gcloud
+    args:
+      - functions
+      - deploy
+      - gmail-stats-manager        # 👈 nombre de tu función
+      - --gen2
+      - --region=europe-southwest1 # (o tu región)
+      - --runtime=python312        # ajusta tu runtime
+      - --source=.
+      - --entry-point=hello_http   # ajusta al nombre de tu handler
+      - --trigger-http
+      - --allow-unauthenticated
