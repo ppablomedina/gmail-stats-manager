@@ -51,30 +51,30 @@ def get_gcp_path(f_name, parkings_alias):
 
     f_name = delete_accents(f_name.lower()).replace('\n', ' ').replace(' ', '-').strip()
 
-    if   f_name.startswith('abonados wps'):                                         return path_abonados_en_banco
-    elif f_name.startswith('gestion'):                                              return path_recaudacion
-    elif f_name.startswith('ocupacion aparc'):                                      return path_ocupacion
-    elif f_name.startswith('ocupacion_todos'):                                      return path_ocupacion_ld
-    elif f_name.startswith('ocupacion_lunes_viernes'):                              return path_ocupacion_lv
-    elif f_name.startswith('ocupacion_sabados_domingos'):                           return path_ocupacion_sd
-    elif f_name.startswith('abonos &'):                                             return path_abonos_lpa_y_qr
-    elif f_name.startswith('informe'):                                              return path_informes_filtrados.replace('$', get_parking_from(f_name, parkings_alias))
-    elif f_name.startswith('abonados'):                                             return path_abonados.replace('$', get_parking_from(f_name, parkings_alias))
-    elif f_name.startswith('rotacion'):                                             return path_rotacion.replace('$', get_parking_from(f_name, parkings_alias))
-    elif f_name.startswith('rincon') or f_name.startswith('estadisticas - rincon'): return path_rincon_estadisticas
+    if   f_name.startswith('abonados-wps'):                                return path_abonados_en_banco
+    elif f_name.startswith('gestion'):                                     return path_recaudacion
+    elif f_name.startswith('ocupacion-aparc'):                             return path_ocupacion
+    elif f_name.startswith('ocupacion-todos'):                             return path_ocupacion_ld
+    elif f_name.startswith('ocupacion_lunes_viernes'):                     return path_ocupacion_lv
+    elif f_name.startswith('ocupacion_sabados_domingos'):                  return path_ocupacion_sd
+    elif f_name.startswith('abonos-&'):                                    return path_abonos_lpa_y_qr
+    elif f_name.startswith('informe'):                                     return path_informes_filtrados.replace('$', get_parking_from(f_name, parkings_alias))
+    elif f_name.startswith('abonados'):                                    return path_abonados.replace('$', get_parking_from(f_name, parkings_alias))
+    elif f_name.startswith('rotacion'):                                    return path_rotacion.replace('$', get_parking_from(f_name, parkings_alias))
+    elif f_name.startswith('rincon') or f_name.startswith('estadisticas'): return path_rincon_estadisticas
 
-    elif f_name.startswith(f'{date} - moxsi incidencias'):                          return path_incidencias
-    elif f_name.startswith(f'abonos'):                                              return path_abonados
-    elif f_name.startswith(f'alquileres con bono'):                                 return path_alquileres_con_bono
-    elif f_name.startswith(f'alquileres sin bono'):                                 return path_alquileres_sin_bono
-    elif f_name.startswith(f'ingresos'):                                            return path_ingresos
-    elif f_name.startswith(f'inventario'):                                          return path_inventario
-    elif f_name.startswith(f'repuestos'):                                           return path_repuestos
-    elif f_name.startswith(f'rentals'):                                             return path_alquileres
-    elif f_name.startswith(f'vehiculo_id'):                                         return path_vehiculo_id
-    elif f_name.startswith(f'customers'):                                           return path_clientes
+    elif f_name.startswith(f'{date} - moxsi incidencias'):                 return path_incidencias
+    elif f_name.startswith(f'abonos'):                                     return path_abonados
+    elif f_name.startswith(f'alquileres con bono'):                        return path_alquileres_con_bono
+    elif f_name.startswith(f'alquileres sin bono'):                        return path_alquileres_sin_bono
+    elif f_name.startswith(f'ingresos'):                                   return path_ingresos
+    elif f_name.startswith(f'inventario'):                                 return path_inventario
+    elif f_name.startswith(f'repuestos'):                                  return path_repuestos
+    elif f_name.startswith(f'rentals'):                                    return path_alquileres
+    elif f_name.startswith(f'vehiculo_id'):                                return path_vehiculo_id
+    elif f_name.startswith(f'customers'):                                  return path_clientes
    
-    else:                                                                           return None
+    else:                                                                  return None
 
 
 def identify_attachments(attachments):

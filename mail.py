@@ -29,15 +29,21 @@ def get_new_mail():
 
     attachments = {}
 
+    print("Conectando al servidor de correo...")
+
     # Conectar al servidor IMAP
     mail = imaplib.IMAP4_SSL("imap.gmail.com")
     mail.login(INBOX_EMAIL, INBOX_PASSWORD)
     mail.select("inbox")
 
+    print("Buscando correos nuevos...")
+
     for sender in ALLOWED_SENDERS:
+
+        print(f'Procesando remitente: {sender}')
         
         # Buscar correos no leídos de cada remitente
-        status, messages = mail.search(None, f'(UNSEEN FROM "{sender}@sagulpa.com")')
+        status, messages = mail.search(None, f'(SEEN FROM "{sender}@sagulpa.com")')
         if status != "OK": continue
 
         # Para cada uno de los correos encontrados:
@@ -53,13 +59,15 @@ def get_new_mail():
                 if part.get_content_maintype() == "multipart": continue
                 if part.get("Content-Disposition") is None:    continue
                 filename = part.get_filename()
-                if filename:
-                    # Decodificar correctamente nombres codificados en MIME
-                    decoded_filename, charset = decode_header(filename)[0]
-                    if isinstance(decoded_filename, bytes):
-                        decoded_filename = decoded_filename.decode(charset or "utf-8")
-                        print(f"NOMBRE DEL ARCHIVO: {decoded_filename}")
-                    attachments[decoded_filename] = part.get_payload(decode=True)
+                filename_utf = email.header.decode_header(filename)
+                print(f"ARCHIVO ADJUNTO ENCONTRADO: {filename_utf}")
+                # if filename:
+                #     # Decodificar correctamente nombres codificados en MIME
+                #     decoded_filename, charset = decode_header(filename)[0]
+                #     if isinstance(decoded_filename, bytes):
+                #         decoded_filename = decoded_filename.decode(charset or "utf-8")
+                #         # print(f"NOMBRE DEL ARCHIVO: {decoded_filename}")
+                #     attachments[decoded_filename] = part.get_payload(decode=True)
 
     mail.logout()
 
