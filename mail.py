@@ -25,7 +25,7 @@ def get_new_mail():
     for sender in allowed_senders:
         
         # Buscar correos no leídos de cada remitente
-        status, messages = mail.search(None, f'(SEEN FROM "{sender}@sagulpa.com")')
+        status, messages = mail.search(None, f'(UNSEEN FROM "{sender}@sagulpa.com")')
         if status != "OK": continue
 
         # Para cada uno de los correos encontrados para ese remitente:
@@ -75,3 +75,4 @@ def notify_warning(missing_files):
             body += f"\n• {'.'.join(files[0].split('.')[-2:])}"
 
         send_email(to=recipient, subject="⚠️ Archivos faltantes", body=body)        
+
