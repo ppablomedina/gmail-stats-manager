@@ -6,22 +6,22 @@ active_pos_names_norm = get_active_pos_names_norm()
 
 agenda = {
 
-    "moxsi": {
+    # "moxsi": {
         
-            "jmunoz": [
-                path_incidencias,
-                path_abonos,
-                path_alquileres,
-                path_alquileres_con_bono,
-                path_alquileres_sin_bono,
-                path_ingresos,
-                path_inventario,
-                path_repuestos,
-                path_vehiculo_id,
-                path_clientes
-            ]
+    #         "jmunoz": [
+    #             path_incidencias,
+    #             path_abonos,
+    #             path_alquileres,
+    #             path_alquileres_con_bono,
+    #             path_alquileres_sin_bono,
+    #             path_ingresos,
+    #             path_inventario,
+    #             path_repuestos,
+    #             path_vehiculo_id,
+    #             path_clientes
+    #         ]
 
-    },
+    # },
 
     "parkings-off_street": {
 

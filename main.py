@@ -21,13 +21,13 @@ def entry_point(request):
     print("Iniciando proceso ETL diario...")
 
     attachments = get_new_mail()
-    # if attachments: 
-    #     attachments = identify_attachments(attachments)
-    #     upload_files_to_gcp(attachments)
+    if attachments: 
+        attachments = identify_attachments(attachments)
+        upload_files_to_gcp(attachments)
 
-    # if pd.Timestamp.now().day == 10: 
-    #     missing_files = get_missing_files()
-    #     if missing_files: notify_warning(missing_files)
+    if pd.Timestamp.now().day == 10: 
+        missing_files = get_missing_files()
+        if missing_files: notify_warning(missing_files)
 
     return "ETL ejecutado correctamente\n", 200
 
