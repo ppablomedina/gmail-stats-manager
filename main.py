@@ -18,8 +18,6 @@ def entry_point(request):
     
     """
 
-    print("Iniciando proceso ETL diario...")
-
     attachments = get_new_mail()
     if attachments: 
         attachments = identify_attachments(attachments)

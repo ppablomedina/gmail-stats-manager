@@ -8,7 +8,7 @@ agenda = {
 
     # "moxsi": {
         
-    #         "jmunoz": [
+    #         "fmunoz": [
     #             path_incidencias,
     #             path_abonos,
     #             path_alquileres,

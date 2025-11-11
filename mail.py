@@ -6,6 +6,7 @@ from email.mime.text import MIMEText
 from email.header import decode_header
 from agenda import agenda
 
+
 INBOX_EMAIL    = "pmedina@sagulpa.com"
 INBOX_PASSWORD = os.getenv("INBOX_PASSWORD")
 
