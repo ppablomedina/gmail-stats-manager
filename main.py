@@ -4,7 +4,7 @@ from mail      import get_new_mail, notify_warning
 import pandas  as pd
 
 
-def entry_point(request):
+def hello_http(request):
     """ 
     Este programa se ejecutará cada día, su función es:
 
@@ -30,4 +30,4 @@ def entry_point(request):
     return "ETL ejecutado correctamente\n", 200
 
 if __name__ == "__main__":
-    entry_point(None)
+    hello_http(None)
