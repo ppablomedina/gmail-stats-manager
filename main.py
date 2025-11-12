@@ -1,6 +1,7 @@
 from gcp.utils import upload_files_to_gcp, get_missing_files
 from gcp.paths import identify_attachments
 from mail      import get_new_mail, notify_warning
+from flask import Flask, request
 import pandas  as pd
 
 
@@ -29,5 +30,8 @@ def entry_point(request):
 
     return "ETL ejecutado correctamente\n", 200
 
-if __name__ == "__main__":
-    entry_point(None)
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def run():
+    return entry_point(request)
