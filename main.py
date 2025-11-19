@@ -1,6 +1,6 @@
 from gcp.utils import upload_files_to_gcp, get_missing_files
 from gcp.paths import identify_attachments
-from mail      import get_new_mail, notify_warning
+from mail      import get_new_mail, notify_warning, send_email
 from flask import Flask, request
 import pandas  as pd
 
