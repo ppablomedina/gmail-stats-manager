@@ -24,7 +24,7 @@ def entry_point(request):
         attachments = identify_attachments(attachments)
         upload_files_to_gcp(attachments)
 
-    send_email("pabloms.lp@gmail.com", "Funciona", "hola")
+    send_email("pmedina", "Funciona", "hola")
 
     if pd.Timestamp.now().day == 10: 
         missing_files = get_missing_files()
