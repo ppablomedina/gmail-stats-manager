@@ -6,10 +6,9 @@ from email.mime.text import MIMEText
 from email.header import decode_header
 from agenda import agenda
 
-
-INBOX_EMAIL    = "pmedina@sagulpa.com"
-INBOX_PASSWORD = os.getenv("INBOX_PASSWORD")
-
+creds = os.getenv("GMAIL_CREDS")
+INBOX_EMAIL    = creds.split("\n")[0]
+INBOX_PASSWORD = creds.split("\n")[1]
 
 def get_new_mail():
 
@@ -75,4 +74,5 @@ def notify_warning(missing_files):
             body += f"\n• {'.'.join(files[0].split('.')[-2:])}"
 
         send_email(to=recipient, subject="⚠️ Archivos faltantes", body=body)        
+
 
