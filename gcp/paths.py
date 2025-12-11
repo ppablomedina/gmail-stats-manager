@@ -5,7 +5,7 @@ import pandas as pd
 prev_month = pd.Timestamp.now() - pd.DateOffset(months=1)
 year       = prev_month.year
 date       = prev_month.strftime("%Y%m")
-
+w_month    = prev_month.month_name(locale='es_ES.UTF-8').lower()
 
 PROJECT_ID = 'bigdata-fase2'
 
@@ -34,16 +34,7 @@ path_ocupacion_lv        = f'{PATH_DATALAKE_POS}/sistemas.ocupacion-lv'         
 path_ocupacion_sd        = f'{PATH_DATALAKE_POS}/sistemas.ocupacion-sd'             + f'/{date}.xls'
 
 # Rutas de moxsi
-path_incidencias         = f'{PATH_DATALAKE_MOXSI}/moxsi.incidencias'               + f'/{date}.xlsx'
-path_vehiculo_id         = f'{PATH_DATALAKE_MOXSI}/moxsi.vehiculos'                 + f'/{date}.xlsx'
-path_repuestos           = f'{PATH_DATALAKE_MOXSI}/moxsi.repuestos'                 + f'/{date}.csv'
-path_inventario          = f'{PATH_DATALAKE_MOXSI}/moxsi.inventario'                + f'/{date}.csv'
-path_abonos              = f'{PATH_DATALAKE_MOXSI}/financiero.abonos'               + f'/{date}.csv'
-path_ingresos            = f'{PATH_DATALAKE_MOXSI}/financiero.ingresos'             + f'/{date}.csv'
-path_clientes            = f'{PATH_DATALAKE_MOXSI}/nextbike.customer-details'       + f'/{date}.csv'
-path_alquileres          = f'{PATH_DATALAKE_MOXSI}/nextbike.alquileres'             + f'/{date}.csv'
-path_alquileres_con_bono = f'{PATH_DATALAKE_MOXSI}/nextbike.alquileres-con-bono'    + f'/{date}.csv'
-path_alquileres_sin_bono = f'{PATH_DATALAKE_MOXSI}/nextbike.alquileres-sin-bono'    + f'/{date}.csv'
+path_ingresos            = f'{PATH_DATALAKE_MOXSI}/financiero.recaudacion'          + f'/{date}.xlsx'
 
 
 def get_gcp_path(f_name, parkings_alias):
@@ -63,16 +54,7 @@ def get_gcp_path(f_name, parkings_alias):
     elif f_name.startswith('rotacion'):                                    return path_rotacion.replace('$', get_parking_from(f_name, parkings_alias))
     elif f_name.startswith('rincon') or f_name.startswith('estadisticas'): return path_rincon_estadisticas
 
-    elif f_name.startswith(f'{date} - moxsi incidencias'):                 return path_incidencias
-    elif f_name.startswith(f'abonos'):                                     return path_abonados
-    elif f_name.startswith(f'alquileres con bono'):                        return path_alquileres_con_bono
-    elif f_name.startswith(f'alquileres sin bono'):                        return path_alquileres_sin_bono
-    elif f_name.startswith(f'ingresos'):                                   return path_ingresos
-    elif f_name.startswith(f'inventario'):                                 return path_inventario
-    elif f_name.startswith(f'repuestos'):                                  return path_repuestos
-    elif f_name.startswith(f'rentals'):                                    return path_alquileres
-    elif f_name.startswith(f'vehiculo_id'):                                return path_vehiculo_id
-    elif f_name.startswith(f'customers'):                                  return path_clientes
+    elif f_name.startswith(f'{w_month}'):                                  return path_ingresos
    
     else:                                                                  return None
 
