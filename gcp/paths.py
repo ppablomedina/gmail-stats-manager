@@ -1,11 +1,13 @@
 import pandas as pd
 
 
+months = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+
 # Fecha del mes anterior
 prev_month = pd.Timestamp.now() - pd.DateOffset(months=1)
 year       = prev_month.year
 date       = prev_month.strftime("%Y%m")
-w_month    = prev_month.month_name(locale='es_ES.UTF-8').lower()
+w_month    = months[prev_month.month - 1]
 
 PROJECT_ID = 'bigdata-fase2'
 
@@ -80,3 +82,4 @@ def get_parking_from(file_name, parkings_alias):
 def delete_accents(text):
     replacements = str.maketrans('áéíóúÁÉÍÓÚ', 'aeiouAEIOU')
     return text.translate(replacements)
+
